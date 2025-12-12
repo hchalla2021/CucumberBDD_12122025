@@ -21,3 +21,4 @@ class LoginPage(BasePage):
 
     def click_login(self):
         self.click(self.LOGIN_BUTTON)
+        # After clicking login, it might navigate to another page, so we can return a new page object if needed
