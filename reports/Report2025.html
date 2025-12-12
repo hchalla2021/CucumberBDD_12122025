@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Behave Test Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .summary {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .feature {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .scenario {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+        }
+        .step {
+            padding: 8px;
+            margin: 5px 0;
+        }
+        .passed {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .failed {
+            color: #f44336;
+            font-weight: bold;
+        }
+        .skipped {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Behave Test Execution Report</h1>
+        <p>Generated on: 2025-12-10 18:13:31</p>
+    </div>
+
+    <div class="feature">
+        <h2>Feature: Validate FB Login functionality</h2>
+<h3>Background:</h3>
+            <div class="step">
+                <span class="skipped">✓</span> GivenLaunch the browser
+            </div>
+
+            <div class="step">
+                <span class="skipped">✓</span> WhenOpen the https://www.facebook.com/ website
+            </div>
+
+            <div class="step">
+                <span class="skipped">✓</span> Thenthe login application has been opened successfully
+            </div>
+
+        <div class="scenario">
+            <h3>Scenario: Login with valid credentials</h3>
+
+            <div class="step">
+                <span class="passed">✓</span> GivenLaunch the browser
+            </div>
+
+            <div class="step">
+                <span class="passed">✓</span> WhenOpen the https://www.facebook.com/ website
+            </div>
+
+            <div class="step">
+                <span class="passed">✓</span> Thenthe login application has been opened successfully
+            </div>
+
+            <div class="step">
+                <span class="passed">✓</span> AndProvide the username "test@gmail.com" and password "Test@1234"
+            </div>
+
+            <div class="step">
+                <span class="passed">✓</span> AndClick on the login button
+            </div>
+
+            <div class="step">
+                <span class="passed">✓</span> ThenUser should be logged in successfully
+            </div>
+
+            <div class="step">
+                <span class="passed">✓</span> ThenClose the browser
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="summary">
+        <h2>Test Summary</h2>
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Total</th>
+                <th>Passed</th>
+                <th>Failed</th>
+                <th>Skipped</th>
+            </tr>
+            <tr>
+                <td>Scenarios</td>
+                <td>1</td>
+                <td class="passed">1</td>
+                <td class="failed">0</td>
+                <td class="skipped">0</td>
+            </tr>
+            <tr>
+                <td>Steps</td>
+                <td>10</td>
+                <td class="passed">7</td>
+                <td class="failed">0</td>
+                <td class="skipped">3</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

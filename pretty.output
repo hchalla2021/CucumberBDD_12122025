@@ -1,0 +1,311 @@
+Feature: Validate FB Login functionality # features/fblogin.feature:1
+
+  Scenario Outline: Login with multiple credentials in parallel browsers -- @1.1         # features/fblogin.feature:14
+    Given Launch both Chrome and Edge browsers in parallel                               # features/steps/loginsteps.py:7
+    When Open the https://www.facebook.com/ website in both browsers                     # features/steps/loginsteps.py:31
+    Then the login application has been opened successfully in both browsers             # features/steps/loginsteps.py:51
+    And Provide the username "test1@gmail.com" and password "Test@1234" in both browsers # features/steps/loginsteps.py:57
+    And Click on the login button in both browsers                                       # features/steps/loginsteps.py:77
+    Then User should be logged in successfully in both browsers                          # features/steps/loginsteps.py:95
+    Then Close both browsers                                                             # features/steps/loginsteps.py:101
+
+  Scenario Outline: Login with multiple credentials in parallel browsers -- @1.2         # features/fblogin.feature:15
+    Given Launch both Chrome and Edge browsers in parallel                               # features/steps/loginsteps.py:7
+    When Open the https://www.facebook.com/ website in both browsers                     # features/steps/loginsteps.py:31
+    Then the login application has been opened successfully in both browsers             # features/steps/loginsteps.py:51
+      Traceback (most recent call last):
+        File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\behave\model.py", line 1991, in run
+          match.run(runner.context)
+          ~~~~~~~~~^^^^^^^^^^^^^^^^
+        File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\behave\matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "features\steps\loginsteps.py", line 53, in verify_login_page_opened_both
+          assert context.login_pages['chrome'].is_logibPage_loaded(), "Chrome: Login page did not load successfully"
+                 ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+      KeyError: 'chrome'
+
+    And Provide the username "test2@gmail.com" and password "Pass@5678" in both browsers # None
+    And Click on the login button in both browsers                                       # None
+    Then User should be logged in successfully in both browsers                          # None
+    Then Close both browsers                                                             # None
+----
+CAPTURED STDERR: scenario
+Exception in thread Thread-21 (open_in_chrome):
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features\steps\loginsteps.py", line 34, in open_in_chrome
+    context.drivers['chrome'].get("https://www.facebook.com/")
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\webdriver.py", line 483, in get
+    self.execute(Command.GET, {"url": url})
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\webdriver.py", line 458, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\errorhandler.py", line 233, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: target frame detached
+  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
+  (Session info: chrome=138.0.7204.158)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff663d8e415+77285]
+	GetHandleVerifier [0x0x7ff663d8e470+77376]
+	(No symbol) [0x0x7ff663b5989c]
+	(No symbol) [0x0x7ff663b4703b]
+	(No symbol) [0x0x7ff663b45efe]
+	(No symbol) [0x0x7ff663b6a7fa]
+	(No symbol) [0x0x7ff663b69b67]
+	(No symbol) [0x0x7ff663c00bb8]
+	(No symbol) [0x0x7ff663bd83e3]
+	(No symbol) [0x0x7ff663ba1521]
+	(No symbol) [0x0x7ff663ba22b3]
+	GetHandleVerifier [0x0x7ff664071efd+3107021]
+	GetHandleVerifier [0x0x7ff66406c29d+3083373]
+	GetHandleVerifier [0x0x7ff66408bedd+3213485]
+	GetHandleVerifier [0x0x7ff663da884e+184862]
+	GetHandleVerifier [0x0x7ff663db055f+216879]
+	GetHandleVerifier [0x0x7ff663d97084+113236]
+	GetHandleVerifier [0x0x7ff663d97239+113673]
+	GetHandleVerifier [0x0x7ff663d7e298+11368]
+	BaseThreadInitThunk [0x0x7ffe2898259d+29]
+	RtlUserThreadStart [0x0x7ffe2abcaf78+40]
+---- CAPTURED_SCENARIO_OUTPUT_END ----
+
+  Scenario Outline: Login with multiple credentials in parallel browsers -- @1.3            # features/fblogin.feature:16
+    Given Launch both Chrome and Edge browsers in parallel                                  # features/steps/loginsteps.py:7
+    When Open the https://www.facebook.com/ website in both browsers                        # features/steps/loginsteps.py:31
+    Then the login application has been opened successfully in both browsers                # features/steps/loginsteps.py:51
+      ASSERT FAILED: Chrome: Login page did not load successfully
+
+    And Provide the username "admin@example.com" and password "Admin@9999" in both browsers # None
+    And Click on the login button in both browsers                                          # None
+    Then User should be logged in successfully in both browsers                             # None
+    Then Close both browsers                                                                # None
+
+  Scenario Outline: Login with multiple credentials in parallel browsers -- @1.4       # features/fblogin.feature:17
+    Given Launch both Chrome and Edge browsers in parallel                             # features/steps/loginsteps.py:7
+    When Open the https://www.facebook.com/ website in both browsers                   # features/steps/loginsteps.py:31
+    Then the login application has been opened successfully in both browsers           # features/steps/loginsteps.py:51
+    And Provide the username "user@test.com" and password "User@4321" in both browsers # features/steps/loginsteps.py:57
+    And Click on the login button in both browsers                                     # features/steps/loginsteps.py:77
+    Then User should be logged in successfully in both browsers                        # features/steps/loginsteps.py:95
+      Traceback (most recent call last):
+        File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\behave\model.py", line 1991, in run
+          match.run(runner.context)
+          ~~~~~~~~~^^^^^^^^^^^^^^^^
+        File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\behave\matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "features\steps\loginsteps.py", line 97, in verify_login_success_both
+          assert context.drivers['chrome'].current_url != "https://www.facebook.com/", "Chrome: Login did not succeed"
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\webdriver.py", line 587, in current_url
+          return self.execute(Command.GET_CURRENT_URL)["value"]
+                 ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\webdriver.py", line 458, in execute
+          self.error_handler.check_response(response)
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+        File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\errorhandler.py", line 233, in check_response
+          raise exception_class(message, screen, stacktrace)
+      selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+      from unknown error: web view not found
+        (Session info: chrome=138.0.7204.158)
+      Stacktrace:
+      	GetHandleVerifier [0x0x7ff663d8e415+77285]
+      	GetHandleVerifier [0x0x7ff663d8e470+77376]
+      	(No symbol) [0x0x7ff663b59a6a]
+      	(No symbol) [0x0x7ff663b31f21]
+      	(No symbol) [0x0x7ff663bdf9be]
+      	(No symbol) [0x0x7ff663c00192]
+      	(No symbol) [0x0x7ff663bd83e3]
+      	(No symbol) [0x0x7ff663ba1521]
+      	(No symbol) [0x0x7ff663ba22b3]
+      	GetHandleVerifier [0x0x7ff664071efd+3107021]
+      	GetHandleVerifier [0x0x7ff66406c29d+3083373]
+      	GetHandleVerifier [0x0x7ff66408bedd+3213485]
+      	GetHandleVerifier [0x0x7ff663da884e+184862]
+      	GetHandleVerifier [0x0x7ff663db055f+216879]
+      	GetHandleVerifier [0x0x7ff663d97084+113236]
+      	GetHandleVerifier [0x0x7ff663d97239+113673]
+      	GetHandleVerifier [0x0x7ff663d7e298+11368]
+      	BaseThreadInitThunk [0x0x7ffe2898259d+29]
+      	RtlUserThreadStart [0x0x7ffe2abcaf78+40]
+
+    Then Close both browsers                                                           # None
+----
+CAPTURED STDERR: scenario
+Exception in thread Thread-39 (enter_in_chrome):
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features\steps\loginsteps.py", line 60, in enter_in_chrome
+    context.login_pages['chrome'].enter_username(username)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Trainings\Selenium Python\BDDCucumber_Shama\pages\loginpage.py", line 17, in enter_username
+    self.enter_text(self.USERNAME_INPUT, username)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Trainings\Selenium Python\BDDCucumber_Shama\pages\BasePage.py", line 20, in enter_text
+    element.clear()
+    ^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'clear'
+Exception in thread Thread-41 (click_in_chrome):
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features\steps\loginsteps.py", line 80, in click_in_chrome
+    context.login_pages['chrome'].click_login()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Trainings\Selenium Python\BDDCucumber_Shama\pages\loginpage.py", line 23, in click_login
+    self.click(self.LOGIN_BUTTON)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Trainings\Selenium Python\BDDCucumber_Shama\pages\BasePage.py", line 15, in click
+    element = self.driver.find_element(*locator)
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\webdriver.py", line 926, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\webdriver.py", line 458, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\errorhandler.py", line 233, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=138.0.7204.158)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff663d8e415+77285]
+	GetHandleVerifier [0x0x7ff663d8e470+77376]
+	(No symbol) [0x0x7ff663b59a6a]
+	(No symbol) [0x0x7ff663b31f21]
+	(No symbol) [0x0x7ff663bdf9be]
+	(No symbol) [0x0x7ff663c00192]
+	(No symbol) [0x0x7ff663bd83e3]
+	(No symbol) [0x0x7ff663ba1521]
+	(No symbol) [0x0x7ff663ba22b3]
+	GetHandleVerifier [0x0x7ff664071efd+3107021]
+	GetHandleVerifier [0x0x7ff66406c29d+3083373]
+	GetHandleVerifier [0x0x7ff66408bedd+3213485]
+	GetHandleVerifier [0x0x7ff663da884e+184862]
+	GetHandleVerifier [0x0x7ff663db055f+216879]
+	GetHandleVerifier [0x0x7ff663d97084+113236]
+	GetHandleVerifier [0x0x7ff663d97239+113673]
+	GetHandleVerifier [0x0x7ff663d7e298+11368]
+	BaseThreadInitThunk [0x0x7ffe2898259d+29]
+	RtlUserThreadStart [0x0x7ffe2abcaf78+40]
+
+Exception in thread Thread-42 (click_in_edge):
+Traceback (most recent call last):
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connection.py", line 565, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features\steps\loginsteps.py", line 83, in click_in_edge
+    context.login_pages['edge'].click_login()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Trainings\Selenium Python\BDDCucumber_Shama\pages\loginpage.py", line 23, in click_login
+    self.click(self.LOGIN_BUTTON)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Trainings\Selenium Python\BDDCucumber_Shama\pages\BasePage.py", line 16, in click
+    element.click()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\webelement.py", line 119, in click
+    self._execute(Command.CLICK_ELEMENT)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\webelement.py", line 572, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\webdriver.py", line 455, in execute
+    response = cast(RemoteConnection, self.command_executor).execute(driver_command, params)
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\remote_connection.py", line 407, in execute
+    return self._request(command_info[0], url, body=data)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\selenium\webdriver\remote\remote_connection.py", line 431, in _request
+    response = self._conn.request(method, url, body=body, headers=headers, timeout=self._client_config.timeout)
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        method, url, fields=fields, headers=headers, **urlopen_kw
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\hchalla2020\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connection.py", line 565, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+---- CAPTURED_SCENARIO_OUTPUT_END ----
+
